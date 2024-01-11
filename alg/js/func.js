@@ -1,33 +1,16 @@
-const dom = {
-    hard: document.querySelector("#hard"),
-    impossible: document.querySelector("#impossible"),
-    lunatic: document.querySelector("#lunatic"),
-    gen: document.querySelector("#gen"),
-    buttons: document.querySelectorAll(".buttons")
-}
-let buttons = document.querySelectorAll(".diff")
-let difficulty;
 let previousNumber;
+let num = []
+
+let buttons = document.querySelectorAll(".diff")
+export let difficulty;
 
 buttons.forEach((button) => button.addEventListener("click", function () {
     return difficulty = button.textContent.toLowerCase()
-
 }))
-dom.gen.addEventListener("click", function () {
-/*     console.log(difficulty)
- */    if (difficulty === "hard") {
-        generateNumbershard()
-    } else if (difficulty === "impossible") {
-        generateNumbersimpossible()
-    } else {
-        generateNumberslunatic()
-    }
-})
-
-let num = []
 
 
-function generateNumbershard() {
+
+export function diffHard() {
     let random = Math.floor(Math.random() * 1000000) + 1
     for (let i = 0; i < num.length; i++) {
         if (num[i] === random) {
@@ -38,7 +21,8 @@ function generateNumbershard() {
     console.log(random)
 }
 
-function generateNumbersimpossible() {
+
+export function dissImpossible() {
     let random = Math.floor(Math.random() * 1000000) + 1;
 
     if (random === previousNumber) {
@@ -47,7 +31,9 @@ function generateNumbersimpossible() {
     console.log(random)
     previousNumber = random
 }
-function generateNumberslunatic() {
+
+
+export function diffLunatic() {
     let random = Math.floor(Math.random() * 1000000000) + 1;
 
     if (random === previousNumber) {
@@ -59,4 +45,29 @@ function generateNumberslunatic() {
 
 
 
+export function gen() {
+    if (difficulty === "hard") {
+        diffHard()
+    } else if (difficulty === "impossible") {
+        dissImpossible()
+    } else {
+        diffLunatic()
+    }
+}
 
+
+export function multiGen(times) {
+    if (difficulty === "hard") {
+        for (let i = 0; i < times; i++) {
+            diffHard()
+        }
+    } else if (difficulty === "impossible") {
+        for (let i = 0; i < times; i++) {
+            dissImpossible()
+        }
+    } else {
+        for (let i = 0; i < times; i++) {
+            diffLunatic()
+        }
+    }
+}
