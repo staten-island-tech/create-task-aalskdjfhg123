@@ -1,3 +1,6 @@
+import { dom } from "./dom";
+
+
 let previousNumber;
 let num = []
 
@@ -15,6 +18,7 @@ export function diffHard() {
     for (let i = 0; i < num.length; i++) {
         if (num[i] === random) {
             console.log(num[i], "win")
+            return i = dom.input.value
         }
     }
     num.push(random)
@@ -27,6 +31,7 @@ export function dissImpossible() {
 
     if (random === previousNumber) {
         console.log(random, "win")
+        return i = dom.input.value
     }
     console.log(random)
     previousNumber = random

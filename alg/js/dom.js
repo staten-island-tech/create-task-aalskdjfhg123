@@ -4,4 +4,5 @@ export const dom = {
     lunatic: document.querySelector("#lunatic"),
     gen: document.querySelector("#gen"),
     multiGen: document.querySelector("#multiGen"),
+    input: document.querySelector("#input")
   }
